@@ -7,6 +7,13 @@
     <title>Sockets CRUD</title>
 </head>
 <body>
-    <h1>App</h1>
+    <form id="noteForm">
+        <input type="text" id="title" placeholder="Escriba el título"/>
+        <textarea id="description" rows="3" placeholder="Escriba la descripción"></textarea>
+        <button type="submit">Guardar</button>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>
