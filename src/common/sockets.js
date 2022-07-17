@@ -1,12 +1,17 @@
-import NoteModel from "../models/note.model";
+import { getNotes, createNote } from "../controllers/notes.controller";
 
 export default (io) => {
   io.on("connection", (socket) => {
     const emitNotes = async () => {
-      const notes = await NoteModel.find({});
+      const notes = await getNotes();
       io.emit("loadnotes", notes);
     };
 
     emitNotes();
+
+    socket.on("savenote", async (note) => {
+      const newNote = await createNote(note);
+      io.emit("creatednote", newNote);
+    });
   });
 };
