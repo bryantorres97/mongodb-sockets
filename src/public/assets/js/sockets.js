@@ -5,10 +5,10 @@ export const loadNotes = (callback) => {
 };
 
 export const saveNote = (title, description) => {
-  console.log(title);
-  console.log(description);
   socket.emit("savenote", { title, description });
-  socket.on("creatednote", (data) => {
-    console.log(data);
-  });
 };
+
+
+export const onNewNote = (callback) => {
+  socket.on("creatednote", callback);
+}

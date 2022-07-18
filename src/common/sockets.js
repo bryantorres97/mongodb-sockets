@@ -11,7 +11,7 @@ export default (io) => {
 
     socket.on("savenote", async (note) => {
       const newNote = await createNote(note);
-      io.emit("creatednote", newNote);
+      socket.emit("creatednote", newNote);
     });
   });
 };

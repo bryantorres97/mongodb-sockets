@@ -9,14 +9,23 @@ export const onHandleSubmit = (event) => {
 };
 
 export const renderNotes = (notes) => {
-    console.log(notes)
-    notes.forEach(({title, description}) => {
-        notesList.innerHTML += `
-         <div>
-         <h1>${title}</h1>
-         <h2>${description}</h2>
-         </div>
-        `
-        
-    });
+  console.log(notes);
+  notes.forEach((note) => notesList.append(noteUI(note)));
+};
+
+export const appendNote = (note) => {
+  notesList.append(noteUI(note))
+}
+
+const noteUI = ({ title, description }) => {
+  const div = document.createElement("div");
+  div.innerHTML = `
+  <div>
+  <h1>${title}</h1>
+  <button>Editar</button>
+  <button>Borrar</button>
+  <p>${description}</p>
+  </div>
+ `;
+  return div;
 };
